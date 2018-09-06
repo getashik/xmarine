@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CrossplatApp"
+             x:Class="CrossplatApp.MainPage">
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem Text="+" Activated="Btn_AddBook"></ToolbarItem>
+        
+    </ContentPage.ToolbarItems>
+    
+    
+    <StackLayout Margin="10">
+        <!-- Place new controls here -->
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"> </RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                
+            </Grid.RowDefinitions>
+
+            <Label Text="You (x)" Grid.Row="0" Grid.Column="0"></Label>
+            <Label Text="Opp (o)" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End"></Label>
+
+            <Button x:Name="button1" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Clicked="BtnClick" />
+            <Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />
+            <Button x:Name="button3" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="2"  Clicked="BtnClick" />
+
+           
+        </Grid>
+
+        <Label Text="Hello" x:Name="sLabel"></Label>
+        <Slider  ValueChanged="Sliding" x:Name="Slider" Minimum="0" Maximum="10"></Slider>
+
+
+        <Label BindingContext="{x:Reference BSlider}" Text="{
+            Binding Value , 
+            StringFormat='Auto bind value is {0:F2}'
+            }" 
+                ></Label>
+        <Slider x:Name="BSlider" Minimum="0" Maximum="10"></Slider>
+
+    </StackLayout>
+
+</ContentPage>
+    

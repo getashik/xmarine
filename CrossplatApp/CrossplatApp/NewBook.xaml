@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrossplatApp.NewBook">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Enter Book Name"></Entry>
+            <Entry Placeholder="Enter Author Name"></Entry>
+            <Button Text="Save"  Clicked="Button_SaveBook"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
