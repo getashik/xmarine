@@ -27,7 +27,7 @@
             <Label Text="You (x)" Grid.Row="0" Grid.Column="0"></Label>
             <Label Text="Opp (o)" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End"></Label>
 
-            <Button x:Name="button1" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Clicked="BtnClick" />
+            <Button x:Name="button1" Text="please" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Clicked="BtnClick" />
             <Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />
             <Button x:Name="button3" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="2"  Clicked="BtnClick" />
 
@@ -45,7 +45,19 @@
                 ></Label>
         <Slider x:Name="BSlider" Minimum="0" Maximum="10"></Slider>
 
+        <ListView x:Name="bookList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+
     </StackLayout>
+
+    
 
 </ContentPage>
     

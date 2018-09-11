@@ -20,6 +20,19 @@ namespace CrossplatApp
 
             
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH)) {
+
+                conn.CreateTable<Book>();
+                var books = conn.Table<Book>().ToList();
+                bookList.ItemsSource = books;
+
+            }
+        }
         public void Sliding(Object sender , Xamarin.Forms.ValueChangedEventArgs e) {
             sLabel.Text = string.Format("{0:F6}", e.NewValue);
         }

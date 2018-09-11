@@ -19,7 +19,23 @@ namespace CrossplatApp
 
         private void Button_SaveBook(object sender, EventArgs e)
         {
-            DisplayAlert("Success", "Book Saved","OK");
+            Book book = new Book()
+            {
+                Name = "ashik",
+                Author = "Ramin"
+
+            };
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection((App.DB_PATH)))
+            {
+                conn.CreateTable<Book>();
+                var numberofrows=conn.Insert(book);
+                if (numberofrows > 0)
+                    DisplayAlert("Success", "New Book has been Saved", "OK");
+                else
+                    DisplayAlert("Error", "Error while Saving", "Oh :(");
+
+            }
+            
         }
 
        
