@@ -21,16 +21,19 @@ namespace CrossplatApp
         {
             Book book = new Book()
             {
-                Name = "ashik",
-                Author = "Ramin"
+                Name = bookName.Text,
+                Author = authorName.Text
 
             };
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection((App.DB_PATH)))
             {
                 conn.CreateTable<Book>();
                 var numberofrows=conn.Insert(book);
-                if (numberofrows > 0)
+                if (numberofrows > 0) { 
+                    bookName.Text = "";
+                  authorName.Text = "";
                     DisplayAlert("Success", "New Book has been Saved", "OK");
+                }
                 else
                     DisplayAlert("Error", "Error while Saving", "Oh :(");
 

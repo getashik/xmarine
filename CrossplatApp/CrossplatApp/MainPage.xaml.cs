@@ -24,22 +24,53 @@ namespace CrossplatApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            GetListData();
+            
+        }
 
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH)) {
+        public void Sliding(Object sender , Xamarin.Forms.ValueChangedEventArgs e) {
+            sLabel.Text = string.Format("{0:F6}", e.NewValue);
+        }
+
+        public void GetListData() {
+
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
+            {
 
                 conn.CreateTable<Book>();
                 var books = conn.Table<Book>().ToList();
                 bookList.ItemsSource = books;
 
             }
-        }
-        public void Sliding(Object sender , Xamarin.Forms.ValueChangedEventArgs e) {
-            sLabel.Text = string.Format("{0:F6}", e.NewValue);
+
         }
 
         private void Btn_AddBook(object sender, EventArgs e)
         {
             Navigation.PushAsync(new NewBook());
+        }
+
+        private void Btn_CustList(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NewList());
+        }
+
+        private void Btn_ListDelete(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var bc = button.BindingContext as Book; 
+
+            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
+            {
+
+                conn.Delete<Book>(bc.Id);
+                DisplayAlert("Success", "Deleted " + bc.Name, "ok");
+                GetListData();
+                
+
+            }
+
+           
         }
     }
 }

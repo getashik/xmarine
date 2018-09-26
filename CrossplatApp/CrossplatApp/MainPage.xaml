@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CrossplatApp"
              x:Class="CrossplatApp.MainPage">
-    <ContentPage.ToolbarItems>
+
+   
+    <ContentPage.ToolbarItems  >
         
-        <ToolbarItem Text="+" Activated="Btn_AddBook"></ToolbarItem>
+        <ToolbarItem Text="Add Book" Activated="Btn_AddBook"  Order="Secondary"   ></ToolbarItem>
+        <ToolbarItem Text="Custom List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Api List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
         
+
     </ContentPage.ToolbarItems>
     
     
@@ -48,7 +53,14 @@
         <ListView x:Name="bookList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                    <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
+                        <Label Text="{Binding Name}"></Label>
+                        <Label Text="{Binding Author}"></Label>
+                        <Button Text="Delete" Clicked="Btn_ListDelete"></Button>
+                    </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
 
             </ListView.ItemTemplate>
