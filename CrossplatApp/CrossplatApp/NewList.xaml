@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CrossplatApp.NewList">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="ashik"></Label>
-            
-                
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="asdasd"></Label>
-                            </StackLayout>
-                       
-           
+             x:Class="CrossplatApp.NewList" Title="Cars">
+    <ContentPage.Content >
+        
+        <StackLayout >
+          
+            <ListView x:Name="CarList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>                
+                           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

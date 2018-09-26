@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using CrossplatApp.DataSources;
 
 namespace CrossplatApp
 {
@@ -15,6 +16,9 @@ namespace CrossplatApp
 		public NewList ()
 		{
 			InitializeComponent ();
+            var dataCls = new NewListData();
+            CarList.ItemsSource = dataCls.Cars;
+           
 		}
 	}
 }

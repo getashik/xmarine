@@ -8,8 +8,8 @@
     <ContentPage.ToolbarItems  >
         
         <ToolbarItem Text="Add Book" Activated="Btn_AddBook"  Order="Secondary"   ></ToolbarItem>
-        <ToolbarItem Text="Custom List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
-        <ToolbarItem Text="Api List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Car List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Array List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
         
 
     </ContentPage.ToolbarItems>
