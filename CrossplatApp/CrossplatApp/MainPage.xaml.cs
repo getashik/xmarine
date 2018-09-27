@@ -13,6 +13,10 @@ namespace CrossplatApp
         {   
             InitializeComponent();
             Slider.Value = 0;
+            
+          
+
+
         }
         public void BtnClick(object sender, EventArgs e) {
             var btn = (Button)sender;
@@ -57,7 +61,7 @@ namespace CrossplatApp
 
         private void Btn_ListDelete(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+            var button = (Image)sender;
             var bc = button.BindingContext as Book; 
 
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
@@ -71,6 +75,11 @@ namespace CrossplatApp
             }
 
            
+        }
+
+        private void Btn_ItemEdit(object sender, EventArgs e)
+        {
+            DisplayAlert("Success", "Edit Pressed ", "ok");
         }
     }
 }

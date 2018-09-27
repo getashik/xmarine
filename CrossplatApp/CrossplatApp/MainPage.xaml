@@ -50,16 +50,49 @@
                 ></Label>
         <Slider x:Name="BSlider" Minimum="0" Maximum="10"></Slider>
 
+        <!--<StackLayout Orientation="Horizontal">
+            <Image Source="delete.png" />
+            <Image Source="edit.png" />
+            <Image Source="delete1.png" />
+        </StackLayout>-->
+
         <ListView x:Name="bookList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                     <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
-                        <Label Text="{Binding Name}"></Label>
-                        <Label Text="{Binding Author}"></Label>
-                        <Button Text="Delete" Clicked="Btn_ListDelete"></Button>
-                    </StackLayout>
+                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+                            <Label Text="{Binding Author}" VerticalTextAlignment="Center"></Label>
+
+
+                            <Image Source="delete1.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+            Tapped="Btn_ListDelete"
+            NumberOfTapsRequired="2" />
+                                </Image.GestureRecognizers>
+                            </Image>    
+                            <!--<Button Text="Del" Clicked="Btn_ListDelete" BackgroundColor="Gold" >
+                              
+                                <Button.Image>
+                                    <OnPlatform x:TypeArguments="FileImageSource">
+                                        <On Platform="Android" Value="https://png.icons8.com/ios/50/000000/pencil-filled.png" />
+                                       
+                                    </OnPlatform>
+                                </Button.Image>
+
+                            </Button>-->
+                            <Button Text="Edit" Clicked="Btn_ItemEdit" HorizontalOptions="End">
+                                <Button.Image>
+                                    <OnPlatform x:TypeArguments="FileImageSource">
+                                        <On Platform="Android" Value="edit.png" />
+
+                                    </OnPlatform>
+                                </Button.Image>
+
+                            </Button>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
 
