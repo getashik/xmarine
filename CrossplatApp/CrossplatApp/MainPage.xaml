@@ -4,18 +4,22 @@
              xmlns:local="clr-namespace:CrossplatApp"
              x:Class="CrossplatApp.MainPage">
 
-   
+
     <ContentPage.ToolbarItems  >
-        
-        <ToolbarItem Text="Add Book" Activated="Btn_AddBook"  Order="Secondary"   ></ToolbarItem>
-        <ToolbarItem Text="Car List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
-        <ToolbarItem Text="Array List" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
-        
+
+        <ToolbarItem Text="Add Book(Sqlite)" Activated="Btn_AddBook"  Order="Secondary"   ></ToolbarItem>
+        <ToolbarItem Text="Car List(Object List)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Array List(From StaticArray)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="List From Api" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+
+
 
     </ContentPage.ToolbarItems>
-    
-    
+
+
     <StackLayout Margin="10">
+
         <!-- Place new controls here -->
         <Grid Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
@@ -24,19 +28,20 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"> </RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                
+
             </Grid.RowDefinitions>
 
             <Label Text="You (x)" Grid.Row="0" Grid.Column="0"></Label>
             <Label Text="Opp (o)" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End"></Label>
 
-            <Button x:Name="button1" Text="please" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Clicked="BtnClick" />
-            <Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />
+            <Button x:Name="button1" Image="camera.png" Text="Click" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Clicked="Btn_TakePhoto" />
+            <Image x:Name="ImageHolder" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="1"></Image>
+            <!--<Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />-->
             <Button x:Name="button3" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="2"  Clicked="BtnClick" />
 
-           
+
         </Grid>
 
         <Label Text="Hello" x:Name="sLabel"></Label>
@@ -61,18 +66,18 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                    <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+                            <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
                             <Label Text="{Binding Author}" VerticalTextAlignment="Center"></Label>
 
 
                             <Image Source="delete1.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer
-            Tapped="Btn_ListDelete"
+                         Tapped="Btn_ListDelete"
             NumberOfTapsRequired="2" />
                                 </Image.GestureRecognizers>
-                            </Image>    
+                            </Image>
                             <!--<Button Text="Del" Clicked="Btn_ListDelete" BackgroundColor="Gold" >
                               
                                 <Button.Image>
@@ -102,7 +107,7 @@
 
     </StackLayout>
 
-    
+
 
 </ContentPage>
     

@@ -4,39 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Plugin.Media;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace CrossplatApp
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
-        {   
+        {
             InitializeComponent();
             Slider.Value = 0;
-            
-          
+
+
 
 
         }
-        public void BtnClick(object sender, EventArgs e) {
+        public void BtnClick(object sender, EventArgs e)
+        {
             var btn = (Button)sender;
-            btn.Text = (btn.Text == "clicked")?"click":"clicked";
+            btn.Text = (btn.Text == "clicked") ? "click" : "clicked";
 
-            
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             GetListData();
-            
+
         }
 
-        public void Sliding(Object sender , Xamarin.Forms.ValueChangedEventArgs e) {
+        public void Sliding(Object sender, Xamarin.Forms.ValueChangedEventArgs e)
+        {
             sLabel.Text = string.Format("{0:F6}", e.NewValue);
         }
 
-        public void GetListData() {
+        public void GetListData()
+        {
 
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
             {
@@ -62,7 +68,7 @@ namespace CrossplatApp
         private void Btn_ListDelete(object sender, EventArgs e)
         {
             var button = (Image)sender;
-            var bc = button.BindingContext as Book; 
+            var bc = button.BindingContext as Book;
 
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
             {
@@ -70,16 +76,50 @@ namespace CrossplatApp
                 conn.Delete<Book>(bc.Id);
                 DisplayAlert("Success", "Deleted " + bc.Name, "ok");
                 GetListData();
-                
+
 
             }
 
-           
+
         }
 
         private void Btn_ItemEdit(object sender, EventArgs e)
         {
             DisplayAlert("Success", "Edit Pressed ", "ok");
+        }
+
+        private async void Btn_TakePhoto(object sender, EventArgs e)
+        {
+            var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+            if (cameraStatus != PermissionStatus.Granted)
+            {
+                var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                cameraStatus = results[Permission.Camera];
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    await DisplayAlert("Permissions Denied", "Unable to take photos.", "OK");
+                    //CameraButton.IsEnabled = false;
+                    return;
+                }
+            }
+
+            // Assures user intends to take a photo
+            await DisplayAlert("Take picture confirmation", "Would you like to take a picture?", "Yes");
+
+            // Accesses Media Plugin's TakePhotoAsync method to take a the photo
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+            {
+                Directory = "Sample",
+                Name = "test.jpg",
+            });
+
+            await DisplayAlert("File Location", photo.Path, "OK");
+
+            ImageHolder.Source = ImageSource.FromStream(() =>
+            {
+                var stream = photo.GetStream();
+                return stream;
+            });
         }
     }
 }
