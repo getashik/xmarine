@@ -7,6 +7,9 @@ using Xamarin.Forms;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using CrossplatApp.Camera;
+
+
 
 namespace CrossplatApp
 {
@@ -120,6 +123,16 @@ namespace CrossplatApp
                 var stream = photo.GetStream();
                 return stream;
             });
+        }
+
+        private void Btn_CamPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Campage());
+        }
+
+        private void Btn_ApiList(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ApiList.ApiList());
         }
     }
 }

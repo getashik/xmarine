@@ -10,8 +10,8 @@
         <ToolbarItem Text="Add Book(Sqlite)" Activated="Btn_AddBook"  Order="Secondary"   ></ToolbarItem>
         <ToolbarItem Text="Car List(Object List)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="Array List(From StaticArray)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
-        <ToolbarItem Text="List From Api" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
-        <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="List From Api" Activated="Btn_ApiList"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CamPage"  Order="Secondary"></ToolbarItem>
 
 
 
