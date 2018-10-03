@@ -2,11 +2,58 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CrossplatApp.NewBook">
+
+
+
     <ContentPage.Content>
         <StackLayout>
             <Entry x:Name="bookName" Placeholder="Enter Book Name"></Entry>
             <Entry x:Name="authorName" Placeholder="Enter Author Name"></Entry>
             <Button Text="Save"  Clicked="Button_SaveBook"></Button>
+
+
+            <ListView x:Name="booksListView" >
+                <ListView.Header >
+                    <StackLayout Orientation="Horizontal" >
+                        <Label Text="List of Books"
+        TextColor="Olive"
+        BackgroundColor="SkyBlue"  HorizontalTextAlignment="Center"
+  VerticalOptions="Center" HorizontalOptions="Center" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
+                                <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+                                <Label Text="{Binding Author}" VerticalTextAlignment="Center"></Label>
+
+
+                                <Image Source="delete1.png" HorizontalOptions="EndAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                         Tapped="Btn_ListDelete"
+            NumberOfTapsRequired="2" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Button Text="Edit" Clicked="Btn_ItemEdit" HorizontalOptions="End">
+                                    <Button.Image>
+                                        <OnPlatform x:TypeArguments="FileImageSource">
+                                            <On Platform="Android" Value="edit.png" />
+
+                                        </OnPlatform>
+                                    </Button.Image>
+
+                                </Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

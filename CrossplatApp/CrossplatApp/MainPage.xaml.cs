@@ -8,7 +8,10 @@ using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using CrossplatApp.Camera;
-
+using System.IO;
+using System.Reflection;
+using CrossplatApp.Models;
+using Newtonsoft.Json;
 
 
 namespace CrossplatApp
@@ -24,18 +27,36 @@ namespace CrossplatApp
 
 
         }
+
         public void BtnClick(object sender, EventArgs e)
         {
             var btn = (Button)sender;
             btn.Text = (btn.Text == "clicked") ? "click" : "clicked";
 
+        }
+        public void ListsFamily()
+        {
+
+            var assembly = IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly;
+            //var assembly = typeof(App).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("CrossplatApp.my_file.json");
+
+            // Family[] Families;
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                base.OnAppearing();
+
+                var json = reader.ReadToEnd();
+                var familyArr = JsonConvert.DeserializeObject<List<Family>>(json);
+                FamilyViewList.ItemsSource = familyArr;
+            }
 
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            GetListData();
+            ListsFamily();
 
         }
 
@@ -44,19 +65,7 @@ namespace CrossplatApp
             sLabel.Text = string.Format("{0:F6}", e.NewValue);
         }
 
-        public void GetListData()
-        {
 
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
-            {
-
-                conn.CreateTable<Book>();
-                var books = conn.Table<Book>().ToList();
-                bookList.ItemsSource = books;
-
-            }
-
-        }
 
         private void Btn_AddBook(object sender, EventArgs e)
         {
@@ -68,28 +77,7 @@ namespace CrossplatApp
             Navigation.PushAsync(new NewList());
         }
 
-        private void Btn_ListDelete(object sender, EventArgs e)
-        {
-            var button = (Image)sender;
-            var bc = button.BindingContext as Book;
 
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(App.DB_PATH))
-            {
-
-                conn.Delete<Book>(bc.Id);
-                DisplayAlert("Success", "Deleted " + bc.Name, "ok");
-                GetListData();
-
-
-            }
-
-
-        }
-
-        private void Btn_ItemEdit(object sender, EventArgs e)
-        {
-            DisplayAlert("Success", "Edit Pressed ", "ok");
-        }
 
         private async void Btn_TakePhoto(object sender, EventArgs e)
         {

@@ -47,6 +47,7 @@ namespace CrossplatApp.ApiList
                 await DisplayAlert("Error", "No Internet", "Ok");
 
             }
+            ProgressLoader.IsVisible = false;
 
         }
     }
