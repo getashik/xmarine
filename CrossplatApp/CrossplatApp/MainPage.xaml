@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CrossplatApp"
-             x:Class="CrossplatApp.MainPage">
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="CrossplatApp.MainPage" >
 
 
     <ContentPage.ToolbarItems>
@@ -12,69 +13,76 @@
         <ToolbarItem Text="List From Api" Activated="Btn_ApiList"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CamPage"  Order="Secondary"></ToolbarItem>
     </ContentPage.ToolbarItems>
+    <ScrollView>
+
+        <StackLayout Margin="3" >
+
+            <forms:ChartView x:Name="wChart" Margin="0" HeightRequest="200" ></forms:ChartView>
+            <ListView x:Name="FamilyViewList" 
+                      RowHeight="40" >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell  >
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
+                                <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+
+           
+
+            <DatePicker MinimumDate="01/01/2018"
+            MaximumDate="12/31/2018"
+            Date="06/21/2018"   />
+
+            <!-- Place new controls here -->
+            <Grid Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Label Text="You (x)" Grid.Row="0" Grid.Column="0"></Label>
+                <Label Text="Opp (o)" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End"></Label>
+
+                <Button x:Name="button1" Image="camera.png" Text="Click" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Clicked="Btn_TakePhoto" />
+                <Image x:Name="ImageHolder" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="1"></Image>
+                <!--<Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />-->
+                <Button x:Name="button3" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="2"  Clicked="BtnClick" />
 
 
-    <StackLayout Margin="10">
+            </Grid>
 
 
-        <ListView x:Name="FamilyViewList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                            <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
-                            <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
-
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-
-            </ListView.ItemTemplate>
-
-        </ListView>
-
-        <!-- Place new controls here -->
-        <Grid Margin="0,20,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-
-            </Grid.RowDefinitions>
-
-            <Label Text="You (x)" Grid.Row="0" Grid.Column="0"></Label>
-            <Label Text="Opp (o)" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End"></Label>
-
-            <Button x:Name="button1" Image="camera.png" Text="Click" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Clicked="Btn_TakePhoto" />
-            <Image x:Name="ImageHolder" WidthRequest="100" HeightRequest="100" Grid.Row="1" Grid.Column="1"></Image>
-            <!--<Button x:Name="button2" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="1"  Clicked="BtnClick" />-->
-            <Button x:Name="button3" Text="Click" BackgroundColor="Gray" Grid.Row="1" Grid.Column="2"  Clicked="BtnClick" />
+            <Label Text="Hello" x:Name="sLabel"></Label>
+            <Slider  ValueChanged="Sliding" x:Name="Slider" Minimum="0" Maximum="10"></Slider>
 
 
-        </Grid>
-
-        <Label Text="Hello" x:Name="sLabel"></Label>
-        <Slider  ValueChanged="Sliding" x:Name="Slider" Minimum="0" Maximum="10"></Slider>
-
-
-        <Label BindingContext="{x:Reference BSlider}" Text="{
+            <Label BindingContext="{x:Reference BSlider}" Text="{
             Binding Value , 
             StringFormat='Auto bind value is {0:F2}'
             }" 
                 ></Label>
-        <Slider x:Name="BSlider" Minimum="0" Maximum="10"></Slider>
-
-
-       
-
-
-    </StackLayout>
+            <Slider x:Name="BSlider" Minimum="0" Maximum="10"></Slider>
 
 
 
+
+
+        </StackLayout>
+
+
+    </ScrollView>
 </ContentPage>
     
