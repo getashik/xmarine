@@ -12,6 +12,7 @@
         <ToolbarItem Text="Array List(From StaticArray)" Activated="Btn_CustList"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="List From Api" Activated="Btn_ApiList"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CamPage"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="QR Bar code(ZXing net)" Activated="Btn_QRBarPage"  Order="Secondary"></ToolbarItem>
     </ContentPage.ToolbarItems>
     <ScrollView>
 
@@ -34,7 +35,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-           
+
 
             <DatePicker MinimumDate="01/01/2018"
             MaximumDate="12/31/2018"

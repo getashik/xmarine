@@ -180,5 +180,10 @@ namespace CrossplatApp
 
 
         }
+
+        private void Btn_QRBarPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new QrBarCode.QrBarPage());
+        }
     }
 }
