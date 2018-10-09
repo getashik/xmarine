@@ -13,9 +13,7 @@ using System.Reflection;
 using CrossplatApp.Models;
 using Newtonsoft.Json;
 using mEntry = Microcharts.Entry;
-
-
-
+using CrossplatApp.View;
 
 namespace CrossplatApp
 {
@@ -27,7 +25,7 @@ namespace CrossplatApp
             InitializeComponent();
             Slider.Value = 0;
             DisplayWchart();
-            //Navigation.PushAsync(new NewBook());
+            Navigation.PushAsync(new MasterDetail());
         }
 
         public void BtnClick(object sender, EventArgs e)
@@ -185,6 +183,11 @@ namespace CrossplatApp
         private void Btn_QRBarPage(object sender, EventArgs e)
         {
             Navigation.PushAsync(new QrBarCode.QrBarPage());
+        }
+
+        private void Btn_MasterDetail(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MasterDetail());
         }
     }
 }

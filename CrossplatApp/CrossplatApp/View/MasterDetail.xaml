@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrossplatApp.View.MasterDetail">
+
+    <MasterDetailPage.Master >
+
+        <ContentPage BackgroundColor="LightGray" Title="Menu">
+            <StackLayout Orientation="Vertical">
+
+                <StackLayout>
+                    <Label Text="Ashik"></Label>
+                </StackLayout>
+
+
+
+                <ListView x:Name="MasterMenuListHolder"
+                          RowHeight="55" BackgroundColor="#e8e8e8"  ItemSelected="OnMenuSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Image Source="{Binding Icon}"   VerticalOptions="Center"></Image>
+                                    <Label Text="{Binding Title}"    VerticalOptions="Center" ></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+                </ListView>
+
+
+
+                <!--<Button Text="Home" Clicked="Btn_Home" ></Button>
+                <Button Text="Add Book(Sqlite)" Clicked="Btn_Books" ></Button>
+                <Button Text="Car List(Object List)" Clicked="Btn_ObjectLis"></Button>-->
+
+
+
+
+
+
+            </StackLayout>
+
+
+
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+
+
+
+
+
+
+
+
+
+    <MasterDetailPage.Detail>
+        <ContentPage>
+            <ContentPage.Content>
+                <StackLayout>
+                    <Label Text="This is Detail page"></Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

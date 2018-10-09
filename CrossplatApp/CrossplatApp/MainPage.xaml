@@ -13,6 +13,8 @@
         <ToolbarItem Text="List From Api" Activated="Btn_ApiList"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="Camera(MediaPlugin)" Activated="Btn_CamPage"  Order="Secondary"></ToolbarItem>
         <ToolbarItem Text="QR Bar code(ZXing net)" Activated="Btn_QRBarPage"  Order="Secondary"></ToolbarItem>
+        <ToolbarItem   Text="Master Detail(MVVM)" Activated="Btn_MasterDetail"  Order="Secondary"></ToolbarItem>
+
     </ContentPage.ToolbarItems>
     <ScrollView>
 
