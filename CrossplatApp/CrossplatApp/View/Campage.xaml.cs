@@ -9,9 +9,8 @@ using Xamarin.Forms.Xaml;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using CrossplatApp.Camera;
 
-namespace CrossplatApp.Camera
+namespace CrossplatApp.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Campage : ContentPage

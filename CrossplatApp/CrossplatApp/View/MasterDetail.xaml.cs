@@ -25,21 +25,40 @@ namespace CrossplatApp.View
             MasterMenuList.Add(new MasterMenu()
             {
                 Title = "Home",
-                Icon = "edit",
+                Icon = "home",
                 TargetType = typeof(HomePage)
             });
 
             MasterMenuList.Add(new MasterMenu()
             {
                 Title = "Add Book(Sqlite)",
-                Icon = "edit",
+                Icon = "book",
                 TargetType = typeof(NewBook)
             });
             MasterMenuList.Add(new MasterMenu()
             {
                 Title = "Car List(Object List)",
-                Icon = "edit",
+                Icon = "car",
                 TargetType = typeof(NewList)
+            });
+
+            MasterMenuList.Add(new MasterMenu()
+            {
+                Title = "List From API",
+                Icon = "www",
+                TargetType = typeof(ApiList)
+            });
+            MasterMenuList.Add(new MasterMenu()
+            {
+                Title = "Camera",
+                Icon = "camera3",
+                TargetType = typeof(Campage)
+            });
+            MasterMenuList.Add(new MasterMenu()
+            {
+                Title = "Qr/Bar Code Scan",
+                Icon = "qr",
+                TargetType = typeof(QrBarPage)
             });
 
             MasterMenuListHolder.ItemsSource = MasterMenuList;

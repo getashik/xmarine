@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 
-namespace CrossplatApp.QrBarCode
+namespace CrossplatApp.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QrBarPage : ContentPage

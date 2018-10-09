@@ -38,10 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ApiList\ApiList.xaml">
+    <EmbeddedResource Update="View\ApiList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Camera\Campage.xaml">
+    <EmbeddedResource Update="View\Campage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\HomePage.xaml">
@@ -53,11 +53,15 @@
     <EmbeddedResource Update="View\NewList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="QrBarCode\QrBarPage.xaml">
+    <EmbeddedResource Update="View\QrBarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\MasterDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="QrBarCode\" />
   </ItemGroup>
 </Project>

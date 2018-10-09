@@ -9,14 +9,9 @@ using Xamarin.Forms.Xaml;
 using Plugin.Connectivity;
 using System.Net.Http;
 using Newtonsoft.Json;
-using CrossplatApp.ApiList;
+using CrossplatApp.Models;
 
-
-
-
-
-
-namespace CrossplatApp.ApiList
+namespace CrossplatApp.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ApiList : ContentPage

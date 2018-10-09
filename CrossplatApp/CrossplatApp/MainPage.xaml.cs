@@ -7,7 +7,6 @@ using Xamarin.Forms;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using CrossplatApp.Camera;
 using System.IO;
 using System.Reflection;
 using CrossplatApp.Models;
@@ -125,7 +124,7 @@ namespace CrossplatApp
 
         private void Btn_ApiList(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ApiList.ApiList());
+            Navigation.PushAsync(new ApiList());
         }
 
         public void DisplayWchart()
@@ -182,7 +181,7 @@ namespace CrossplatApp
 
         private void Btn_QRBarPage(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new QrBarCode.QrBarPage());
+            Navigation.PushAsync(new QrBarPage());
         }
 
         private void Btn_MasterDetail(object sender, EventArgs e)
