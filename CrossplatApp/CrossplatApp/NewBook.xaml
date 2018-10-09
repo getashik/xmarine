@@ -6,24 +6,25 @@
 
 
     <ContentPage.Content>
-        <StackLayout>
-            <Entry x:Name="bookName" Placeholder="Enter Book Name"></Entry>
-            <Entry x:Name="authorName" Placeholder="Enter Author Name"></Entry>
-            <Button Text="Save"  Clicked="Button_SaveBook"></Button>
+        <StackLayout >
 
+            <StackLayout x:Name="BookEntryForm">
+                <Entry Text="{Binding Name}" x:Name="bookName" Placeholder="Enter Book Name"></Entry>
+                <Entry  Text="{Binding Author}" x:Name="authorName" Placeholder="Enter Author Name"></Entry>
+                <Button Text="Save"  Clicked="Button_SaveBook"></Button>
+            </StackLayout>
 
-            <ListView x:Name="booksListView" >
-                <ListView.Header >
-                    <StackLayout Orientation="Horizontal" >
-                        <Label Text="List of Books"
-        TextColor="Olive"
-        BackgroundColor="SkyBlue"  HorizontalTextAlignment="Center"
-  VerticalOptions="Center" HorizontalOptions="Center" />
-                    </StackLayout>
-                </ListView.Header>
-                <ListView.ItemTemplate>
+            <ListView x:Name="booksListView"  SelectionMode="Single" >
+
+                <ListView.ItemTemplate >
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell >
+                            <ViewCell.ContextActions >
+
+                                <MenuItem  Text="Delete" Clicked="Delete_Clicked"></MenuItem>
+                                <MenuItem Text="Edit" Clicked="Edit_Clicked"></MenuItem>
+                            </ViewCell.ContextActions>
+
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
                                 <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
@@ -37,8 +38,8 @@
             NumberOfTapsRequired="2" />
                                     </Image.GestureRecognizers>
                                 </Image>
-
-                                <Button Text="Edit" Clicked="Btn_ItemEdit" HorizontalOptions="End">
+                                <Button Image="edit.png" CommandParameter="edit" Text="Edd"   Clicked="Btn_ItemEdit"></Button>
+                                <!--<Button Text="Edit" Clicked="Btn_ItemEdit" HorizontalOptions="End">
                                     <Button.Image>
                                         <OnPlatform x:TypeArguments="FileImageSource">
                                             <On Platform="Android" Value="edit.png" />
@@ -46,7 +47,7 @@
                                         </OnPlatform>
                                     </Button.Image>
 
-                                </Button>
+                                </Button>-->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

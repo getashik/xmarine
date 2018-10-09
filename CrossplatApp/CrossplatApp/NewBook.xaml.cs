@@ -12,9 +12,11 @@ namespace CrossplatApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewBook : ContentPage
     {
+        string ctxt = "save";
         public NewBook()
         {
             InitializeComponent();
+            BookEntryForm.BindingContext = new Book();
             GetBooksData();
         }
 
@@ -29,11 +31,22 @@ namespace CrossplatApp
             using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection((App.DB_PATH)))
             {
                 conn.CreateTable<Book>();
-                var numberofrows = conn.Insert(book);
+                // BookEntryForm.BindingContext.GetType().GetProperty("Id").SetValue(BookEntryForm.BindingContext, null);
+                var numberofrows = 0;
+                if (ctxt == "edit")
+                    numberofrows = conn.Update(BookEntryForm.BindingContext);
+                else
+                    numberofrows = conn.Insert(BookEntryForm.BindingContext);
+
+
                 if (numberofrows > 0)
                 {
-                    bookName.Text = "";
-                    authorName.Text = "";
+
+                    BookEntryForm.BindingContext = new Book();
+                    ctxt = "save";
+
+                    //bookName.Text = "";
+                    //authorName.Text = "";
                     GetBooksData();
                     //DisplayAlert("Success", "New Book has been Saved", "OK");
                 }
@@ -60,7 +73,11 @@ namespace CrossplatApp
 
         private void Btn_ItemEdit(object sender, EventArgs e)
         {
-            DisplayAlert("Success", "Edit Pressed ", "ok");
+            var Button = (Button)sender;
+            var bc = Button.BindingContext as Book;
+            BookEntryForm.BindingContext = bc;
+            ctxt = "edit";
+
         }
 
         private void Btn_ListDelete(object sender, EventArgs e)
@@ -81,7 +98,14 @@ namespace CrossplatApp
 
         }
 
+        private void Delete_Clicked(object sender, EventArgs e)
+        {
 
+        }
 
+        private void Edit_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

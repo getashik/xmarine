@@ -27,6 +27,7 @@ namespace CrossplatApp
             InitializeComponent();
             Slider.Value = 0;
             DisplayWchart();
+            //Navigation.PushAsync(new NewBook());
         }
 
         public void BtnClick(object sender, EventArgs e)
