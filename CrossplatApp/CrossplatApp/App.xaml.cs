@@ -15,7 +15,7 @@ namespace CrossplatApp
             InitializeComponent();
 
             // MainPage = new NavigationPage(new MainPage());
-            MainPage = new MasterDetail();
+            MainPage = new LoginPage();
         }
         public App(string DB_Path)
         {
@@ -23,7 +23,7 @@ namespace CrossplatApp
             InitializeComponent();
             DB_PATH = DB_Path;
             //MainPage = new NavigationPage(new MainPage());
-            MainPage = new MasterDetail();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

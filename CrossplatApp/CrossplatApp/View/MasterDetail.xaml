@@ -5,13 +5,22 @@
 
     <MasterDetailPage.Master >
 
+
         <ContentPage BackgroundColor="LightGray" Title="Menu">
+
             <StackLayout Orientation="Vertical">
 
-                <StackLayout>
-                    <Label Text="Ashik"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Image Source="prof" WidthRequest="100" HeightRequest="100"></Image>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label FontAttributes="Bold" Text="Isha and Ramin"></Label>
+                        <Label Text="Ap House"></Label>
+                        <Label Text="Thenhipalam"></Label>
+                        <Label Text="673636"></Label>
+                    </StackLayout>
                 </StackLayout>
-
 
 
                 <ListView x:Name="MasterMenuListHolder"

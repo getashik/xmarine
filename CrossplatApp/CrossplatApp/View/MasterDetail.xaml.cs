@@ -20,7 +20,17 @@ namespace CrossplatApp.View
 
 
             InitializeComponent();
+            var settings = new ToolbarItem
+            {
+                Icon = "logout"
 
+            };
+            settings.Clicked += (sender, e) =>
+            {
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+            };
+
+            this.ToolbarItems.Add(settings);
 
             MasterMenuList.Add(new MasterMenu()
             {
@@ -81,6 +91,7 @@ namespace CrossplatApp.View
         {
             Detail = new NavigationPage(new NewList());
             IsPresented = false;
+
         }
 
         private void Btn_Home(object sender, EventArgs e)

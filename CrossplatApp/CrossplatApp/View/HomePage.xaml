@@ -8,13 +8,14 @@
             <forms:ChartView x:Name="wChart" Margin="0" HeightRequest="200" ></forms:ChartView>
 
             <ListView x:Name="FamilyViewList" 
-                      RowHeight="40" >
-                <ListView.ItemTemplate >
+                      RowHeight="40"  >
+                <ListView.ItemTemplate  >
                     <DataTemplate>
                         <ViewCell  >
-                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <StackLayout Padding="10" Orientation="Horizontal" VerticalOptions="Center">
                                 <!--<TextCell Text="{Binding Name}" Detail="{Binding Author}"></TextCell>-->
-                                <Label Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+                                <Label  Text="{Binding Name}" VerticalTextAlignment="Center"></Label>
+                                <Image Source="rarrow" HorizontalOptions="EndAndExpand"></Image>
 
                             </StackLayout>
                         </ViewCell>
@@ -24,5 +25,6 @@
             </ListView>
 
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

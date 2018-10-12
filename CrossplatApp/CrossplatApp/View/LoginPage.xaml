@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CrossplatApp.ViewModel"
+             x:Class="CrossplatApp.View.LoginPage">
+    <ContentPage.BindingContext>
+        <vm:UserLogin></vm:UserLogin>
+    </ContentPage.BindingContext>
+    <ContentPage.Content >
+        <StackLayout  WidthRequest="200" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+            <Entry   Text="{Binding UserName}" Placeholder="User Name"></Entry>
+            <Entry Text="{Binding UserPassword}" Placeholder="Password" IsPassword="True" ></Entry>
+            <Button Text="Login" Command="{Binding LoginAction}"></Button>
+
+
+            <Label
+    Text="Sign Up"
+    HorizontalOptions="Center" >
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+           
+            NumberOfTapsRequired="2" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding Msg }" TextColor="Red" HorizontalOptions="Center"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
